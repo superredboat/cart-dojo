@@ -28,4 +28,16 @@ public class Utils {
         }
     }
 
+    public static boolean isStringNotEmpty(String str) {
+        return (str != null && !str.isEmpty());
+    }
+
+    public static String getStringEmpty(String str) {
+        String strReturn = "";
+        if (str != null && !str.isEmpty()) {
+            strReturn = str;
+        }
+
+        return strReturn;
+    }
 }
