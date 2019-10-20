@@ -1,11 +1,12 @@
 package com.wongnai.interview.movie;
 
-import java.util.List;
-
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
+import java.util.Set;
 
 @Repository
 public interface MovieRepository extends CrudRepository<Movie, Long> {
@@ -24,4 +25,8 @@ public interface MovieRepository extends CrudRepository<Movie, Long> {
 	 */
 	@Query("SELECT m FROM Movie m where LOWER(m.name) LIKE %:keyword%")
 	List<Movie> findByNameContains(@Param("keyword") String keyword);
+
+	@Query("SELECT m FROM Movie m where m.id IN :id")
+	List<Movie> findByIdIn(@Param("id") Set<Long> ids);
+
 }
