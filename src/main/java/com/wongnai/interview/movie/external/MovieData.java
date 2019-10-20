@@ -1,5 +1,7 @@
 package com.wongnai.interview.movie.external;
 
+import com.google.gson.Gson;
+
 import java.util.List;
 
 public class MovieData {
@@ -41,5 +43,10 @@ public class MovieData {
 
 	public void setGenres(List<String> genres) {
 		this.genres = genres;
+	}
+
+	@Override
+	public String toString() {
+		return new Gson().toJson(this);
 	}
 }
